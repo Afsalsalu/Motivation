@@ -10,17 +10,17 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
-
         }
 
         #imageContainer {
-            display: none;
             margin-top: 20px;
         }
 
-        #imageToShow {
+        .motivatedimg {
             max-width: 100%;
             height: auto;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
 
         button {
@@ -35,13 +35,6 @@
             padding: 0;
             font-weight: 600;
         }
-
-        /* .btn-con {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 50vh;
-        } */
 
         .rgbdiv {
             display: flex;
@@ -143,94 +136,66 @@
             display: none;
         }
 
-
-
-         
-        
         .imgmindiv {
-            display: block; 
             border-radius: 5px;
             width: 30%;
             height: 40vh;
-            display: flex;
             justify-content: center;
             background-color: transparent;
             border-radius: 5px;
-
         }
 
-        .motivatedimg {
-             width: 100%;
-             border-radius: 5px;
+        @media screen and (max-width: 720px) {
+            .imgmindiv {
+                width: 65%;
+                height: 25vh;
+            }
+
+            .motivatedimg {
+                width: 100%;
+                border-radius: 5px;
+            }
         }
-
-@media screen and (max-width: 720px) {
-    /* .parentdiv {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        position: absolute;
-        top: 30vh;
-    } */
-
-    .imgmindiv {
-            display: block; 
-            border-radius: 5px;
-            width: 65%;
-            height: 25vh;
-             display: flex; justify-content: center;
-             background-color: transparent;
-             border-radius: 5px;
-
-        }
-
-        .motivatedimg {
-             width: 100%;
-             border-radius: 5px;
-
-        }
-
-}
-
-
-
-
-
-
-    
     </style>
 </head>
 
 <body>
-    <div class="parentdiv" style="    display: flex; justify-content: center; align-items: center; flex-direction: column;position: relative;  top: 100px;">
-        <div  class="imgmindiv">
-            <img class="motivatedimg" src="motivated.jpg" alt="" >
-        
+    <div class="parentdiv"
+        style="display: flex; justify-content: center; align-items: center; flex-direction: column; gap: 45px; position: relative; top: 90px;">
+        <div class="imgmindiv" id="imageContainer">
+            <img class="motivatedimg" src="motivated.jpg" alt="">
         </div>
-        <div class="btn-con  clickbutton">
+        <div class="btn-con clickbutton">
             <button id="threeD">Click Here</button>
-    
         </div>
     </div>
 
-
-    <div id="imageContainer">
+    <div id="videoContainer">
         <video src="video.mp4" id="imageToShow" controls></video>
     </div>
     <script>
         document.getElementById('threeD').addEventListener('click', function () {
-            const imageContainer = document.getElementById('imageContainer');
+            const image = document.querySelector('.motivatedimg');
+            if (image.style.opacity === '0' || image.style.opacity === '') {
+                image.style.opacity = '1';
+            } else {
+                image.style.opacity = '0';
+            }
+        });
+
+        document.getElementById('threeD').addEventListener('click', function () {
+            const videoContainer = document.getElementById('videoContainer');
             const video = document.getElementById('imageToShow');
-            if (imageContainer.style.display === 'none' || imageContainer.style.display === '') {
-                imageContainer.style.display = 'block';
+            if (videoContainer.style.display === 'none' || videoContainer.style.display === '') {
+                videoContainer.style.display = 'block';
                 video.play();
             } else {
-                imageContainer.style.display = 'none';
+                videoContainer.style.display = 'none';
                 video.pause();
                 video.currentTime = 0;
             }
         });
+
         // Prevent inspect element
         window.addEventListener('contextmenu', function (e) {
             e.preventDefault();
@@ -240,6 +205,7 @@
                 e.preventDefault();
             }
         });
+
         let d3 = document.querySelector("#threeD");
         d3.addEventListener('mouseover', function () {
             d3.innerHTML = "Click";

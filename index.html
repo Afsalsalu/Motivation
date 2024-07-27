@@ -144,41 +144,69 @@
         }
 
 
-        .motivatedimg {
+
+         
+        
+        .imgmindiv {
             display: block; 
             border-radius: 5px;
              width: 30%;
+             height: 40vh;
+             display: flex; justify-content: center;
+             background-color: transparent;
+             border-radius: 5px;
         }
 
+        .motivatedimg {
+             width: 100%;
+             border-radius: 5px;
+        }
 
 @media screen and (max-width: 720px) {
-    .parentdiv {
+    /* .parentdiv {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         position: absolute;
         top: 30vh;
-    }
+    } */
 
-    .motivatedimg {
+    .imgmindiv {
             display: block; 
             border-radius: 5px;
-             width: 50%;
+            width: 70%;
+            height: 25vh;
+             display: flex; justify-content: center;
+             background-color: transparent;
+             border-radius: 5px;
+
         }
+
+        .motivatedimg {
+             width: 100%;
+             border-radius: 5px;
+
+        }
+
 }
+
+
+
+
+
 
     
     </style>
 </head>
 
 <body>
-    <div class="parentdiv">
-        <div style=" display: flex; justify-content: center;">
-            <img class="motivatedimg" src="motivated.jpg" alt="">
+    <div class="parentdiv" style="    display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div  class="imgmindiv">
+            <img class="motivatedimg" src="motivated.jpg" alt="" >
         
         </div>
-        <div class="btn-con" style=" display: flex; justify-content: center; align-items: center;">
+        <div class="btn-con  clickbutton">
             <button id="threeD">Allarum Adiche Keri Vaaa</button>
     
         </div>

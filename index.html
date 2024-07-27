@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+
+        }
+
+        #imageContainer {
+            display: none;
+            margin-top: 20px;
+        }
+
+        #imageToShow {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            cursor: pointer;
+            width: 250px;
+            height: 60px;
+            background: rgba(35, 35, 35, 1);
+            color: #f4f4f4;
+            margin: 2% 2%;
+            padding: 0;
+            font-weight: 600;
+        }
+
+        .btn-con {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* height: 100vh; */
+        }
+
+        .rgbdiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            padding: 2%;
+        }
+
+        @keyframes rainbow {
+            0% {
+                background-color: #f50a0a;
+            }
+
+            10% {
+                background-color: #f5770a;
+            }
+
+            20% {
+                background-color: #f5f10a;
+            }
+
+            30% {
+                background-color: #9ff50a;
+            }
+
+            40% {
+                background-color: #1df50a;
+            }
+
+            60% {
+                background-color: #0af5d2;
+            }
+
+            80% {
+                background-color: #0a12f5;
+            }
+
+            100% {
+                background-color: #f50add;
+            }
+        }
+
+        #rgb:hover::before {
+            transition: 0.2s ease-in-out;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            opacity: 1;
+        }
+
+        /* 3D button */
+        #threeD {
+            position: relative;
+            color: #0e1111;
+            background-color: #e8773a;
+            border-top: 4px solid #282828;
+            border-left: 8px solid #282828;
+            border-right: 6px solid #282828;
+            border-bottom: 10px solid #282828;
+        }
+
+        #threeD::after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 9px;
+            transform: translate(0, 16px);
+            background: #663c26;
+        }
+
+        #threeD::before {
+            content: "";
+            position: absolute;
+            width: 6px;
+            top: 0px;
+            left: 0;
+            height: 100%;
+            background: #663c26;
+        }
+
+        #threeD:active {
+            border-top: 6px solid #282828;
+            background: #f56c22;
+        }
+
+        #threeD:active::after {
+            height: 0px;
+            background: #e0601b;
+        }
+
+        #threeD:active::before {
+            height: 0px;
+            background: #e0601b;
+        }
+
+        video {
+            display: none;
+        }
+
+
+        .motivatedimg {
+            display: block; 
+            border-radius: 5px;
+             width: 30%;
+        }
+
+
+@media screen and (max-width: 720px) {
+    .parentdiv {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 30vh;
+    }
+
+    .motivatedimg {
+            display: block; 
+            border-radius: 5px;
+             width: 50%;
+        }
+}
+
+    
+    </style>
+</head>
+
+<body>
+    <div class="parentdiv">
+        <div style=" display: flex; justify-content: center;">
+            <img class="motivatedimg" src="motivated.jpg" alt="">
+        
+        </div>
+        <div class="btn-con" style=" display: flex; justify-content: center; align-items: center;">
+            <button id="threeD">Allarum Adiche Keri Vaaa</button>
+    
+        </div>
+    </div>
+
+
+    <div id="imageContainer">
+        <video src="video.mp4" id="imageToShow" controls></video>
+    </div>
+    <script>
+        document.getElementById('threeD').addEventListener('click', function () {
+            const imageContainer = document.getElementById('imageContainer');
+            const video = document.getElementById('imageToShow');
+            if (imageContainer.style.display === 'none' || imageContainer.style.display === '') {
+                imageContainer.style.display = 'block';
+                video.play();
+            } else {
+                imageContainer.style.display = 'none';
+                video.pause();
+                video.currentTime = 0;
+            }
+        });
+        // Prevent inspect element
+        window.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+        window.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 67 || e.keyCode === 73)) {
+                e.preventDefault();
+            }
+        });
+        let d3 = document.querySelector("#threeD");
+        d3.addEventListener('mouseover', function () {
+            d3.innerHTML = "Click";
+        });
+        d3.addEventListener('mouseout', function () {
+            d3.innerHTML = "Motivation video";
+        });
+    </script>
+</body>
+
+</html>
